@@ -32,12 +32,12 @@
                     <input type="number" id="pages" name="pages">
                 </p>
                 <legend>Have you read this book?</legend>
-                <label for="readYes">Yes</label>
-                <input type="radio" id="readYes" name="read">
-                <label for="readNo">No</label>
-                <input type="radio" id="readNo" name="read">
+                <input type="radio" value="Yes" name="read" checked>Yes
+                <br>
+                <input type="radio" value="No" name="read">No
             </form>
-            <button id="add-book" type="submit" form="book-form" value="Add Book">Add Book</button>
+            <button id="confirm-form" type="submit" form="book-form" value="Confirm">Confirm</button>
+            <button id="close-form" type="submit" form="book-form" value="Close">Close</button>
         </dialog>
         <div>
             <button id="new-book" type="button">New Book</button>
