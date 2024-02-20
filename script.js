@@ -22,8 +22,10 @@ function addBookToLibrary(){
     let author = document.getElementById("author").value
     let pages = document.getElementById("pages").value
     let read = document.querySelector('input[name="read"]:checked').value
-    let book = new Book(title, author, pages, read)
-    myLibrary.push(book);
+    if (title != "" || author != ""){
+        let book = new Book(title, author, pages, read)
+        myLibrary.push(book);
+    }
 }
 
 function displayBooks(myLibrary){
