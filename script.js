@@ -4,6 +4,7 @@ const showButton = document.getElementById("new-book");
 const closeButton = document.getElementById("close-form");
 const confirmButton = document.getElementById("confirm-form")
 const cardDiv = document.getElementById("cards")
+const bookForm = document.getElementById("book-form")
 
 function Book(title, author, pages, read){
     this.title = title;
@@ -16,7 +17,12 @@ function Book(title, author, pages, read){
     }
 }
 
-function addBookToLibrary(book){
+function addBookToLibrary(){
+    let title = document.getElementById("title").value
+    let author = document.getElementById("author").value
+    let pages = document.getElementById("pages").value
+    let read = document.querySelector('input[name="read"]:checked').value
+    let book = new Book(title, author, pages, read)
     myLibrary.push(book);
 }
 
@@ -29,16 +35,16 @@ function displayBooks(myLibrary){
         let bookPages = document.createElement("p")
         let bookRead = document.createElement("p")
         bookTitle.className = "book-title"
-        bookTitle.value = myLibrary[i].title
+        bookTitle.innerText = myLibrary[i].title
         newBook.appendChild(bookTitle)
         bookAuthor.className = "book-author"
-        bookAuthor.value = myLibrary[i].author
+        bookAuthor.innerText = myLibrary[i].author
         newBook.appendChild(bookAuthor)
         bookPages.className = "book-pages"
-        bookPages.value = myLibrary[i].pages
+        bookPages.innerText = myLibrary[i].pages
         newBook.appendChild(bookPages)
         bookRead.className = "book-read"
-        bookRead.value = myLibrary[i].read
+        bookRead.innerText = myLibrary[i].read
         newBook.appendChild(bookRead)
         cardDiv.appendChild(newBook)
     }
@@ -49,15 +55,13 @@ showButton.addEventListener("click", () => {
 });
 
 closeButton.addEventListener("click", () => {
+    bookForm.reset();
     dialog.close();
 });
 
 confirmButton.addEventListener("click", () => {
-    let title = document.getElementById("title").value
-    let author = document.getElementById("author").value
-    let pages = document.getElementById("pages").value
-    let read = document.querySelector('input[name="read"]:checked').value
-    let book = new Book(title, author, pages, read)
-    addBookToLibrary(book)
+    addBookToLibrary()
+    bookForm.reset();
+    cardDiv.innerHTML = ""
     displayBooks(myLibrary)
 })
