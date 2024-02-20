@@ -3,6 +3,7 @@ const dialog = document.getElementById("form-dialog");
 const showButton = document.getElementById("new-book");
 const closeButton = document.getElementById("close-form");
 const confirmButton = document.getElementById("confirm-form")
+const cardDiv = document.getElementById("cards")
 
 function Book(title, author, pages, read){
     this.title = title;
@@ -21,7 +22,25 @@ function addBookToLibrary(book){
 
 function displayBooks(myLibrary){
     for (i = 0; i < myLibrary.length; i++){
-        
+        let newBook = document.createElement("div")
+        newBook.className = "book-card"
+        let bookTitle = document.createElement("p")
+        let bookAuthor = document.createElement("p")
+        let bookPages = document.createElement("p")
+        let bookRead = document.createElement("p")
+        bookTitle.className = "book-title"
+        bookTitle.value = myLibrary[i].title
+        newBook.appendChild(bookTitle)
+        bookAuthor.className = "book-author"
+        bookAuthor.value = myLibrary[i].author
+        newBook.appendChild(bookAuthor)
+        bookPages.className = "book-pages"
+        bookPages.value = myLibrary[i].pages
+        newBook.appendChild(bookPages)
+        bookRead.className = "book-read"
+        bookRead.value = myLibrary[i].read
+        newBook.appendChild(bookRead)
+        cardDiv.appendChild(newBook)
     }
 }
 
@@ -40,4 +59,5 @@ confirmButton.addEventListener("click", () => {
     let read = document.querySelector('input[name="read"]:checked').value
     let book = new Book(title, author, pages, read)
     addBookToLibrary(book)
+    displayBooks(myLibrary)
 })
