@@ -20,10 +20,6 @@ body{
     border-bottom-left-radius: 5px;
 }
 
-.book-card p{
-    margin: 0;
-}
-
 .book-author{
     background-color: rgb(190, 158, 116);
     border-radius: 5px;
@@ -34,7 +30,6 @@ body{
 }
 
 .book-pages{
-    
     
 }
 

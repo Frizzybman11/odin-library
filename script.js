@@ -32,10 +32,10 @@ function displayBooks(myLibrary){
     for (i = 0; i < myLibrary.length; i++){
         let newBook = document.createElement("div")
         newBook.className = "book-card"
-        let bookTitle = document.createElement("p")
-        let bookAuthor = document.createElement("p")
-        let bookPages = document.createElement("p")
-        let bookRead = document.createElement("p")
+        let bookTitle = document.createElement("span")
+        let bookAuthor = document.createElement("span")
+        let bookPages = document.createElement("span")
+        let bookRead = document.createElement("span")
         bookTitle.className = "book-title"
         bookTitle.innerText = myLibrary[i].title
         newBook.appendChild(bookTitle)
