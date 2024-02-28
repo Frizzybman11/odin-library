@@ -43,7 +43,7 @@ function displayBooks(myLibrary){
         bookAuthor.innerText = myLibrary[i].author
         newBook.appendChild(bookAuthor)
         bookPages.className = "book-pages"
-        bookPages.innerText = myLibrary[i].pages
+        bookPages.innerText = myLibrary[i].pages + " pages"
         newBook.appendChild(bookPages)
         bookRead.className = "book-read"
         bookRead.innerText = myLibrary[i].read
