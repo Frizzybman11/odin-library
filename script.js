@@ -41,7 +41,7 @@ function displayBooks(myLibrary){
         let bookAuthor = document.createElement("span")
         let bookPages = document.createElement("span")
         let bookStatus = document.createElement("div")
-        let bookRead = document.createElement("span")
+        let bookRead = document.createElement("input")
         let bookRemove = document.createElement("input")
         bookInfo.className = "book-info"
         bookTitle.className = "book-title"
@@ -56,11 +56,19 @@ function displayBooks(myLibrary){
         newBook.appendChild(bookInfo)
         bookStatus.className = "book-status"
         bookRead.className = "book-read"
-        bookRead.innerText = myLibrary[i].read
+        bookRead.type = "image"
+        bookRead.setAttribute("onclick", "readStatus(this)")
+        if (myLibrary[i].read == "Read"){
+            bookRead.src="images/checkbox-outline.svg"
+            bookRead.classList.add("read-yes")
+        } else {
+            bookRead.src="images/close-box-outline.svg"
+            bookRead.classList.add("read-no")
+        }
         bookStatus.appendChild(bookRead)
         bookRemove.className = "book-remove"
         bookRemove.type = "image"
-        bookRemove.setAttribute("onclick", "deleteBook(this)");
+        bookRemove.setAttribute("onclick", "deleteBook(this)")
         bookRemove.src="images/delete.svg"
         bookStatus.appendChild(bookRemove)
         newBook.appendChild(bookStatus)
@@ -71,8 +79,28 @@ function displayBooks(myLibrary){
 function deleteBook(book){
     let booknum = book.parentNode.parentNode.id
     booknum = booknum.slice(-1)
-    myLibrary.pop(booknum)
+    console.log(booknum)
+    myLibrary.splice(booknum, 1)
     book.parentNode.parentNode.remove()
+    cardDiv.innerHTML = ""
+    displayBooks(myLibrary)
+}
+
+function readStatus(book){
+    let booknum = book.parentNode.parentNode.id
+    booknum = booknum.slice(-1)
+    let currentStatus = myLibrary[booknum].read
+    if (currentStatus == "Read"){
+        myLibrary[booknum].read = "Not Read"
+        book.src="images/close-box-outline.svg"
+        book.classList.remove("read-yes")
+        book.classList.add("read-no")
+    } else {
+        myLibrary[booknum].read = "Read"
+        book.src="images/checkbox-outline.svg"
+        book.classList.remove("read-no")
+        book.classList.add("read-yes")
+    }
 }
 
 showButton.addEventListener("click", () => {

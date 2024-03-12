@@ -39,6 +39,8 @@ body{
 }
 
 .book-read{
+    height: 30px;
+    width: 30px;
 }
 
 .book-remove{
@@ -93,4 +95,12 @@ dialog{
     height: 50px;
     width: 100px;
     border-radius: 10px;
+}
+
+.read-no{
+    filter: invert(51%) sepia(99%) saturate(7381%) hue-rotate(354deg) brightness(95%) contrast(136%);
+}
+
+.read-yes{
+    filter: invert(23%) sepia(93%) saturate(2611%) hue-rotate(95deg) brightness(93%) contrast(104%);
 }
