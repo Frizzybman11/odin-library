@@ -41,6 +41,17 @@ body{
 .book-read{
 }
 
+.book-remove{
+    height: 30px;
+    width: 30px;
+    filter: invert(51%) sepia(99%) saturate(7381%) hue-rotate(354deg) brightness(95%) contrast(136%);
+}
+
+.book-status{
+    display: flex;
+    justify-content: space-around;
+}
+
 .book-title{
     background-color: rgb(190, 158, 116);
     border-radius: 5px;

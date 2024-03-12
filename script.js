@@ -23,6 +23,9 @@ function addBookToLibrary(){
     let pages = document.getElementById("pages").value
     let read = document.querySelector('input[name="read"]:checked').value
     if (title != "" || author != ""){
+        if (pages == ""){
+            pages = 0;
+        }
         let book = new Book(title, author, pages, read)
         myLibrary.push(book);
     }
@@ -39,7 +42,7 @@ function displayBooks(myLibrary){
         let bookPages = document.createElement("span")
         let bookStatus = document.createElement("div")
         let bookRead = document.createElement("span")
-        let bookRemove = document.createElement("button")
+        let bookRemove = document.createElement("input")
         bookInfo.className = "book-info"
         bookTitle.className = "book-title"
         bookTitle.innerText = myLibrary[i].title
@@ -56,10 +59,20 @@ function displayBooks(myLibrary){
         bookRead.innerText = myLibrary[i].read
         bookStatus.appendChild(bookRead)
         bookRemove.className = "book-remove"
+        bookRemove.type = "image"
+        bookRemove.setAttribute("onclick", "deleteBook(this)");
+        bookRemove.src="images/delete.svg"
         bookStatus.appendChild(bookRemove)
         newBook.appendChild(bookStatus)
         cardDiv.appendChild(newBook)
     }
+}
+
+function deleteBook(book){
+    let booknum = book.parentNode.parentNode.id
+    booknum = booknum.slice(-1)
+    myLibrary.pop(booknum)
+    book.parentNode.parentNode.remove()
 }
 
 showButton.addEventListener("click", () => {
