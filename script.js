@@ -32,22 +32,32 @@ function displayBooks(myLibrary){
     for (i = 0; i < myLibrary.length; i++){
         let newBook = document.createElement("div")
         newBook.className = "book-card"
+        newBook.id = "book" + i
+        let bookInfo = document.createElement("div")
         let bookTitle = document.createElement("span")
         let bookAuthor = document.createElement("span")
         let bookPages = document.createElement("span")
+        let bookStatus = document.createElement("div")
         let bookRead = document.createElement("span")
+        let bookRemove = document.createElement("button")
+        bookInfo.className = "book-info"
         bookTitle.className = "book-title"
         bookTitle.innerText = myLibrary[i].title
-        newBook.appendChild(bookTitle)
+        bookInfo.appendChild(bookTitle)
         bookAuthor.className = "book-author"
         bookAuthor.innerText = myLibrary[i].author
-        newBook.appendChild(bookAuthor)
+        bookInfo.appendChild(bookAuthor)
         bookPages.className = "book-pages"
         bookPages.innerText = myLibrary[i].pages + " pages"
-        newBook.appendChild(bookPages)
+        bookInfo.appendChild(bookPages)
+        newBook.appendChild(bookInfo)
+        bookStatus.className = "book-status"
         bookRead.className = "book-read"
         bookRead.innerText = myLibrary[i].read
-        newBook.appendChild(bookRead)
+        bookStatus.appendChild(bookRead)
+        bookRemove.className = "book-remove"
+        bookStatus.appendChild(bookRemove)
+        newBook.appendChild(bookStatus)
         cardDiv.appendChild(newBook)
     }
 }
