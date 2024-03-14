@@ -79,7 +79,6 @@ function displayBooks(myLibrary){
 function deleteBook(book){
     let booknum = book.parentNode.parentNode.id
     booknum = booknum.slice(-1)
-    console.log(booknum)
     myLibrary.splice(booknum, 1)
     book.parentNode.parentNode.remove()
     cardDiv.innerHTML = ""
